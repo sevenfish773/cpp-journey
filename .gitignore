@@ -1,0 +1,43 @@
+# ---- 构建产物 ----
+build/
+out/
+bin/
+*.exe
+*.obj
+*.o
+*.a
+*.so
+*.dylib
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# ---- CMake ----
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+Makefile
+
+# ---- Visual Studio ----
+.vs/
+*.vcxproj
+*.vcxproj.user
+*.sln
+Debug/
+Release/
+x64/
+x86/
+
+# ---- VS Code / CLion / IDEA ----
+.vscode/
+.idea/
+
+# ---- 其他 ----
+*.user
+*.suo
+*.log
+.DS_Store
+Thumbs.db

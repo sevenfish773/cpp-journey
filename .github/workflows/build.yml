@@ -1,0 +1,44 @@
+name: Build & Test
+
+# 什么时候自动跑：每次 push 和每次 PR
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:      # 也可以在 GitHub 网页上手动点一下跑
+
+jobs:
+  build-linux:
+    name: 编译并运行测试（Ubuntu / gcc）
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 配置 CMake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+
+      - name: 编译
+        run: cmake --build build --parallel
+
+      - name: 运行测试
+        run: ctest --test-dir build --output-on-failure
+
+  build-windows:
+    name: 编译（Windows / MSVC）
+    runs-on: windows-latest
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 配置 CMake
+        run: cmake -S . -B build
+
+      - name: 编译
+        run: cmake --build build --config Debug --parallel
+
+      - name: 运行测试
+        run: ctest --test-dir build -C Debug --output-on-failure
