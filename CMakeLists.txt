@@ -7,12 +7,17 @@
 # ============================================================
 cmake_minimum_required(VERSION 3.16)
 
+# 注意 LANGUAGES 必须同时写 C 和 CXX：
+# week01 的练习是 .c 文件（C 语言），后面的周次才逐步换成 .cpp
 project(cpp_journey
     VERSION 0.1.0
     DESCRIPTION "My C++ learning journey"
-    LANGUAGES CXX)
+    LANGUAGES C CXX)
 
 # ---- 全局编译选项 ----
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
