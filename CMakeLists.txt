@@ -27,9 +27,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # MSVC / GCC / Clang 通用的警告选项：把警告当"提醒"而不是"噪音"
 if(MSVC)
-    add_compile_options(/W4 /utf-8)
+    add_compile_options(/W4 /utf-8 /Zi)
 else()
-    add_compile_options(-Wall -Wextra -Wpedantic)
+    # -g：生成调试信息，VS Code 里 F5 打断点、单步必须靠它
+    add_compile_options(-Wall -Wextra -Wpedantic -g)
 endif()
 
 # ---- 打开测试功能 ----

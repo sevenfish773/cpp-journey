@@ -20,15 +20,15 @@ int *array=(int*)malloc(sizeof(int)*2);
 int main(void)
 {
     int numsize,returnSize,target;
-    printf("请输入数组的大小：");
+    printf("input the number of elements：");
     scanf("%d",&numsize);
     int nums[numsize];
-    printf("请输入数组元素：");
+    printf("input the array elements：");
     for(int i=0;i<numsize;i++)
     {
         scanf("%d",&nums[i]);
     }
-    printf("请输入目标值：");
+    printf("input the target value：");
     scanf("%d",&target);
     int *array=twoSum(nums,numsize,target,&returnSize);
     printf("%d %d\n",array[0],array[1]);

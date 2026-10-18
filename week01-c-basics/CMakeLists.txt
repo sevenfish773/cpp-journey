@@ -14,3 +14,5 @@ target_include_directories(test_string PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # 把测试注册到 ctest，名字叫 week01-string
 add_test(NAME week01-string COMMAND test_string)
+
+add_executable(practise practise.c)
