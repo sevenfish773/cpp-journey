@@ -34,9 +34,17 @@ size_t my_strlen(const char* str)
 // ------------------------------------------------------------
 char* my_strcpy(char* dest, const char* src)
 {
-    // TODO: 在这里写你的实现
-    (void)src;
-    return dest;
+    if (dest == NULL || src == NULL) {
+        return dest;
+    }
+
+    char* original_dest = dest;  // 保存 dest 的起始位置
+    while (*src != '\0') {
+        *dest++ = *src++;  // 拷贝字符并移动指针
+    }
+    *dest = '\0';  // 添加字符串结束符
+
+    return original_dest;  // 返回最初的 dest 指针
 }
 
 // ------------------------------------------------------------
@@ -45,9 +53,20 @@ char* my_strcpy(char* dest, const char* src)
 // ------------------------------------------------------------
 char* my_strcat(char* dest, const char* src)
 {
-    // TODO: 在这里写你的实现
-    (void)src;
-    return dest;
+    if (dest == NULL || src == NULL) {
+        return dest;
+    }
+
+    char* original_dest = dest;  // 保存 dest 的起始位置
+    while (*dest != '\0') {
+        dest++;  // 移动到 dest 的结尾
+    }
+    while (*src != '\0') {
+        *dest++ = *src++;  // 拷贝字符并移动指针
+    }
+    *dest = '\0';  // 添加字符串结束符
+
+    return original_dest;  // 返回最初的 dest 指针
 }
 
 // ------------------------------------------------------------
@@ -63,7 +82,16 @@ char* my_strcat(char* dest, const char* src)
 // ------------------------------------------------------------
 char* my_strdup(const char* src)
 {
-    // TODO: 在这里写你的实现
-    (void)src;
-    return NULL;
+    if (src == NULL) {
+        return NULL;  // 步骤 1
+    }
+
+    size_t len = my_strlen(src) + 1;  // 步骤 2
+    char* new_str = (char*)malloc(len);  // 步骤 3
+    if (new_str == NULL) {
+        return NULL;  // 内存分配失败
+    }
+
+    my_strcpy(new_str, src);  // 步骤 4
+    return new_str;
 }
